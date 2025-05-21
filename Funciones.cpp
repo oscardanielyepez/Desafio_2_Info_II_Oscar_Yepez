@@ -4,8 +4,8 @@
 #include <Cabecera.h>
 #include <sstream>
 
-bool validarCantidadPalabras(const string& texto, int max_palabras) {
-    istringstream stream(texto);
+bool validarCantidadPalabras(const string& texto_nombre, int max_palabras) {
+    istringstream stream(texto_nombre);
     string palabra;
     int contador = 0;
 
