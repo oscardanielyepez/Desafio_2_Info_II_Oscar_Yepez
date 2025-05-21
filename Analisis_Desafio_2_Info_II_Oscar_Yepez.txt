@@ -1,0 +1,128 @@
+
+*********************************************
+
+****Cada alojamiento posee:
+un nombre, -->Publica
+un código --> Privado
+identificador, -->Privado
+un anfitrión responsable, --Privado 
+un departamento y municipio al que pertenece, --> Publico 
+un tipo (casa oapartamento), --> Publico
+una dirección, -->publico
+un precio por noche, --> Publico
+un conjunto de amenidades (ascensor, piscina, aire acondicionado, caja fuerte, parqueadero, patio, etc. --Publico
+
+
+**Adicionalmente, para cada alojamiento se conocen las fechas futuras (hasta por un año) en las que se encuentra reservado por algún huésped.
+
+****cada reservación es necesario conocer: 
+fecha de entrada, 
+duración (en cantidad de noches), 
+código de la reservación, 
+código del alojamiento, 
+documento del huésped, 
+método de pago (PSE, TCrédito), 
+fecha del pago, y monto.
+
+**Adicionalmente, el huésped puede incluir anotaciones en su reservación, por lo que debe disponer de espacio para escribir sus inquietudes al anfitrión, con hasta 1000 caracteres.
+
+****De los anfitriones se conoce su número de documento, su antigüedad en la plataforma (en meses), su puntuación (de 0 a 5.0) y los respectivos alojamientos que administra.
+
+	**Un anfitrión puede manejar uno o muchos alojamientos,
+
+****De los huéspedes se conoce su número de documento, su antigüedad en la plataforma, su puntuación (de 0 a 5.0) y la información de sus reservas; en caso de que posea alguna.
+
+	**un huésped puede estar registrado en la plataforma teniendo cero o más reservaciones, siempre y cuando sus reservaciones no coincidan en ninguna fecha.
+
+
+*********************************************
+
+Funcionalidades esenciales
+
+****I - Carga / actualización de los datos: 
+
+Se requiere desarrollar los algoritmos
+requeridos a fin de leer y actualizar los datos en el almacenamiento permanente.
+Esta funcionalidad no debe aparecer visible en el menú presentado a los usuarios.
+Los programadores deben diseñar el formato de uno o más archivos destinados a
+contener la información de huéspedes, anfitriones, alojamientos y reservaciones
+(vigentes o históricas). Las reservaciones correspondientes a fechas pasadas deben
+quedar almacenadas de forma permanente (en el histórico).
+El formato de los archivos debe presentarse y explicarse adecuadamente dentro del
+informe de documentación a entregar junto con el desafío. Esto se considera
+esencial dentro de la documentación.
+
+
+
+****Adicionalmente, presente un menú para acceder a funcionalidades que permitan:****
+
+
+II - Ingreso a la plataforma según el perfil (huésped o anfitrión).
+Funcionalidad sencilla que permite iniciar sesión con las credenciales personales y
+mostrar el menú de funcionalidades disponibles según el rol. Los datos requeridos
+para verificar el inicio de sesión se recuperan del almacenamiento permanente. En
+este enunciado no se contempla implementar una funcionalidad de registro de
+usuarios.
+
+
+III - Reservar alojamiento
+
+Esta funcionalidad es exclusiva de los huéspedes.
+A partir de una fecha, un municipio específico y una cantidad de noches, el
+programa debe mostrar al usuario un listado de los alojamientos disponibles y
+permitirle a continuación hacer la reservación de uno de ellos. El usuario puede
+elegir aplicar un filtro que corresponde a fijar el costo máximo por noche del
+alojamiento, establecer la puntuación mínima que debe tener el anfitrión, o ambas si
+así lo desea. Por ende, para concretar una reserva primero se realiza una búsqueda
+y luego el huésped selecciona entre los resultados que satisfagan el criterio.
+Una segunda opción de búsqueda de alojamiento consiste en realizarlo
+directamente según el código del mismo.
+
+Al finalizar la reserva, el programa debe mostrar comprobante de confirmación,
+indicando el código de la reserva (gestionada automáticamente), nombre del
+usuario, código del alojamiento, la fecha de inicio y de finalización. Ambas fechas
+deben mostrarse en el formato: nombreDía, día “de” nombreMes “del” año.
+
+Recuerde validar que el usuario no tenga otras reservas en ninguno de esos días y
+que el alojamiento esté disponible por la totalidad de la reservación.
+
+
+IV - Anular reservación: 
+
+Funcionalidad disponible tanto para el huésped como para
+el anfitrión asociado a una reservación. Elimina la reservación correspondiente al
+código indicado.
+
+
+V. Consultar reservaciones anfitrión: 
+
+
+Esta funcionalidad permite al anfitrión
+imprimir en pantalla todas las reservaciones activas para todos sus alojamientos,
+que correspondan a un rango de fechas específico.
+
+VI. Actualizar histórico: 
+
+Esta funcionalidad mueve todas las reservaciones de
+fechas previas a una “fecha de corte” al archivo histórico en el almacenamiento
+permanente, y actualiza las estructuras de datos para que permitan almacenar
+reservaciones en cualquier fecha de los próximos 12 meses
+.
+Respecto a esa “fecha de corte”, puede asumir lo siguiente:
+a) Se debe preguntar al usuario anfitrión.
+b) No será menor que las fechas previamente existentes en el archivo histórico.
+c) Se toma como base para establecer los próximos 12 meses que se
+habilitarán para reservaciones.
+
+
+VII. Medición del consumo de recursos: 
+
+Esta funcionalidad tiene propósitos
+académicos, a fin de soportar el desarrollo. De manera automática, se debe mostrar
+en pantalla dos valores al finalizar la ejecución de todas las demás funcionalidades
+del sistema:
+a. La cantidad de iteraciones requeridas (directa e indirectamente) para
+completar esa tarea específica.
+b. El total de memoria que se está consumiendo en ese momento exacto, por
+conceptos de los objetos creados.
+
