@@ -2,7 +2,6 @@
 #define CABECERA_H
 
 #include <string>
-#include "Clases_Definidas_anfitrion.cpp"
 
 using namespace std;
 

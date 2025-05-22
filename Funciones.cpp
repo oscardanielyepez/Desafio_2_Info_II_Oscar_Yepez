@@ -21,3 +21,7 @@ bool validarCantidadPalabras(const std::string& texto, int max_palabras) {
     if (en_palabra) palabras++;
     return palabras > 0 && palabras <= max_palabras;
 }
+
+void imprimir_Menu () {
+    cout << "Aqui debemos imprimir el menu" <<endl;
+}
