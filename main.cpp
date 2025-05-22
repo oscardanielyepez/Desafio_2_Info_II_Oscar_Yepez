@@ -2,14 +2,24 @@
 #include <string>
 #include <cctype>
 #include <cstdlib>
+#include <Cabecera.h>
+#include <class_Anfitrion.h>
+#include <class_Huesped.h>
 
 using namespace std;
 
 int main() {
 
+    string Menu_Principal[3] = {"1: Huesped", "2: Anfitrion", "Salir"};
+    string Menu_Anfitrion[10] = {"1: Crear alojamiento: ",
+                                "2: Borrar alojamiento: ",
+                                "3: Consultar reservaciones: ",
+                                "4: Actualizar historico", };
+
     bool start = true;
-	int contador = 0;
-    int opcion;
+    int contador = 0;
+    int opcion = 0;
+
 
     //Para pedir opcion del menu inicial.
     while (start) {
@@ -44,15 +54,18 @@ int main() {
 
     switch (opcion) {
         case 1:
-            cout << "Iniciar sesion como Huesped" << endl;
-            // Lógica para iniciar sesión como huésped
+            cout << "Has iniciado como Huesped" << endl;
+
+            imprimir_Menu_Hueped();
+            cin >> opcion;
             break;
         case 2:
             cout << "Iniciar sesion como Anfitrion" << endl;
-            // Lógica para iniciar sesión como anfitrión
+            cin >> opcion;
             break;
         case 3:
             cout << "Saliendo del programa..." << endl;
+            cin >> opcion;
             return 0;
     }
 

@@ -1,0 +1,4 @@
+#ifndef CLASS_HUESPED_H
+#define CLASS_HUESPED_H
+
+#endif // CLASS_HUESPED_H

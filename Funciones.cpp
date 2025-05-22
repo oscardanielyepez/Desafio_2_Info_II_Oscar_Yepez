@@ -4,16 +4,20 @@
 #include <Cabecera.h>
 #include <sstream>
 
-bool validarCantidadPalabras(const string& texto_nombre, int max_palabras) {
-    istringstream stream(texto_nombre);
-    string palabra;
-    int contador = 0;
-
-    while (stream >> palabra) {
-        contador++;
-        if (contador > max_palabras) {
-            return false;
+// Función auxiliar para validar la cantidad de palabras en un string
+bool validarCantidadPalabras(const std::string& texto, int max_palabras) {
+    int palabras = 0;
+    bool en_palabra = false;
+    for (char c : texto) {
+        if (isspace(static_cast<unsigned char>(c))) {
+            if (en_palabra) {
+                palabras++;
+                en_palabra = false;
+            }
+        } else {
+            en_palabra = true;
         }
     }
-    return true;
+    if (en_palabra) palabras++;
+    return palabras > 0 && palabras <= max_palabras;
 }
