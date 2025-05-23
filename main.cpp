@@ -10,63 +10,110 @@ using namespace std;
 
 int main() {
 
-    string Menu_Principal[3] = {"1: Huesped", "2: Anfitrion", "Salir"};
+    bool start = true;
+    bool start_2 = false;
+    bool lg_valido = false;
+    int opcion = 0;
+    int Num_H = 1;
+    int Num_A = 2;
+
+    string Menu_Principal[3] = {"1: Huesped", "2: Anfitrion", "3: Salir"};
+
     string Menu_Anfitrion[10] = {"1: Crear alojamiento: ",
                                 "2: Borrar alojamiento: ",
                                 "3: Consultar reservaciones: ",
-                                "4: Actualizar historico", };
+                                "4: Actualizar historico",
+                                "5: Finalizar seccion"};
 
-    bool start = true;
-    int contador = 0;
-    int opcion = 0;
+    string Menu_Login_Anfitrion[3] = {"1: Inicar sesion: ",
+                                      "2: Crear usuario",
+                                      "3: Volver"};
 
+    string Menu_Huesped [4] {"1: Bucar reservaciones ",
+                           "2: Reservar alojamientos ",
+                           "3: Anular reservacion ",
+                           "4: Volver "};
 
-    //Para pedir opcion del menu inicial.
-    while (start) {
-            // Se maneja bajo excepcion.
-            try {
-                cout << "Iniciar como Huespued o Anfitrion" << endl;
-                cout << "1. Huesped" << endl;
-                cout << "2. Anfitrion" << endl;
-                cout << "3. Salir" << endl;
-                cin >> opcion;
+    while (start){
+        //Imprimir menu inicial:
+        Imprimir_Menu(string Menu_Principal);
+        opcion = Pedir_Opcion(string Menu_Principal, int opcion);
+
+        if (int opcion == 3) {
+            bool start = false;
+        }
+
+        if (int opcion >=1 && int opcion <= 3){
+            start_2 = true;
+        }
+
+        while (start_2) {
+            //Imprimimos menu de huesped
+            if (int opcion == 1){
+                Imprimir_Menu(Menu_Huesped);
+                int opcion = Pedir_Opcion (string Menu_Huesped, int opcion);
+
+                if (int opcion = 4){
+                    bool start_2 == false;
+                    break;
+                } else {
+                    Ejecutar_Accion(int opcion, Num_H);
+                }
+
+            //Menu de anfitrion
+            } else if(int opcion == 2){
+
+                //Segundo menu, crear o iniciar seccion.
+                while (lg_valido == false) {
+                    Imprimir_Menu(string Menu_Login_Anfitrion);
+                    int opcion = Perdir_Opcion(string Menu_Login_Anfitrion, int opcion)
+
+                        if (opcion == 3) {
+                            break; // Enteoria deberiamos romper el ciclo que repite el menu 2, de anfitrion
+                    }
+
+                    switch (opcion) {
+                    case 1:
+                        cout << "Estamos iniciando seccion:" << endl;
+                        bool lg_valido = Login_Valido(string login); // Esta funcion en teoria nos deberia permitir inciar seccion, validando en el archivo de User_Afitrion
+                        break;
+                    case 2:
+                        cout << "Estamos creando un usuario anfitrion" << endl;
+                        bool lg_valido = Login_Valido(string admin);
+
+                        //Tienen que iniciar como admin, para poder crear.
+                        if (lg_valido){
+                            Crear_Usuario() //Enteoria aqui deberiamos llamar la funcion que nos crear a los usuarios
+                            break;
+                        }
+                        break;
+                    default:
+                        cout << "Opción no válida." << endl;
+                    };
+                }
+
+                //Despues de iniciar seccion.
+                if (Login_Valido) {
+                    Imprimir_Menu(string Menu_Huesped);
+                    int opcion = Pedir_Opcion (string Menu_Huesped, int opcion);
+
+                    if (int opcion == 2){
+                        bool start_2 = false;
+                        break;
+                    } else {
+                        Ejecutar_Accion(int opcion, Num_A)
+                    }
+                }else {
+                    ; // No estamos haciendo, nada pq no deberiamos llegar aqui.
+                }
             }
-            catch (const exception& e) {
-                cout << "\n";
+
+            } else if(int opcion == 3){
+                //En teoria no deberia llegar aca.
+                break;
+            }else {
+                //No deberia llegar aca.
+                break;
             }
-
-            contador += 1;
-
-            //Se entiende que con el try, no lo deja pasar, pero por su las moscas.
-            if (opcion >= 1 && opcion <= 3)
-            {
-                start = false;
-            }
-            else if (contador >= 4)
-            {
-                start = false;
-            }
-            else
-            {
-                cout << "No has ingresado una opcion correcta:\n\n" << "Intentos realizados: " << contador << endl;
-            }
-    }
-
-    switch (opcion) {
-        case 1:
-            cout << "Has iniciado como Huesped" << endl;
-
-            imprimir_Menu_Hueped();
-            cin >> opcion;
-            break;
-        case 2:
-            cout << "Iniciar sesion como Anfitrion" << endl;
-            cin >> opcion;
-            break;
-        case 3:
-            cout << "Saliendo del programa..." << endl;
-            cin >> opcion;
-            return 0;
-    }
-
+        }
 }

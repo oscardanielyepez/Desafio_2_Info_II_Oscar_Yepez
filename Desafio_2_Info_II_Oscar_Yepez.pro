@@ -21,4 +21,5 @@ HEADERS += \
     class_Huesped.h
 
 DISTFILES += \
-    Alojamientos_Generados_All
+    Alojamientos_Generados_All \
+    Users_Anfitrion
